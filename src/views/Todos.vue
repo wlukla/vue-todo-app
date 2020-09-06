@@ -6,8 +6,11 @@
     <AddTodo 
       @add-todo="addTodo"
     />
+
+    <Loader v-if="loading" />
+
     <TodoList
-      v-if="todos.length"
+      v-else-if="todos.length"
       v-bind:todos="todos"
       @remove-todo="removeTodo"
     />
@@ -19,6 +22,7 @@
 <script>
 import TodoList from '@/components/TodoList';
 import AddTodo from '@/components/AddTodo';
+import Loader from '@/components/Loader';
 
 export default {
   name: 'App',
@@ -26,11 +30,15 @@ export default {
     fetch('https://jsonplaceholder.typicode.com/todos?_limit=7')
       .then((response) => response.json())
       .then((json) => {
-        this.todos = json;
+        setTimeout(() => {
+          this.todos = json;
+          this.loading = false;
+        }, 1000)
       })
   },
   data: () => ({
     todos: [],
+    loading: true,
   }),
   methods: {
     removeTodo(id) {
@@ -42,7 +50,8 @@ export default {
   },
   components: {
     AddTodo,
-    TodoList
+    TodoList,
+    Loader
   }
 }
 </script>
