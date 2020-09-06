@@ -7,7 +7,7 @@
           v-on:change="todo.completed = !todo.completed"
         />
         <strong>{{ index }}</strong>
-      {{ todo.title }}
+      {{ todo.title | capitalize }}
       </span>
       <button
         class="delete-btn"
@@ -27,6 +27,11 @@ export default {
       required: true,
     },
     index: Number
+  },
+  filters: {
+    capitalize(value) {
+      return `${value[0].toUpperCase()}${value.slice(1)}`
+    }
   }
 }
 </script>
