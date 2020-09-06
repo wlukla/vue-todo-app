@@ -1,12 +1,18 @@
 <template>
   <div>
+
+    <router-link to="/">Home</router-link>
+
     <AddTodo 
       @add-todo="addTodo"
     />
     <TodoList
+      v-if="todos.length"
       v-bind:todos="todos"
       @remove-todo="removeTodo"
     />
+
+    <p v-else>Your todo list is empty!</p>
   </div>
 </template>
 
