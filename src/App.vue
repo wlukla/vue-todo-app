@@ -1,44 +1,10 @@
 <template>
   <div id="app">
     <h1>#TODO</h1>
-    <AddTodo 
-      @add-todo="addTodo"
-    />
-    <TodoList
-      v-bind:todos="todos"
-      @remove-todo="removeTodo"
-    />
+
+    <router-view />
   </div>
 </template>
-
-<script>
-import TodoList from '@/components/TodoList';
-import AddTodo from '@/components/AddTodo';
-
-export default {
-  name: 'App',
-  data: () => ({
-    todos: [
-      {id: 1, title: 'Read some book', completed: false},
-      {id: 2, title: 'Write some vue code', completed: false},
-      {id: 3, title: 'Write some golang code', completed: false},
-      {id: 4, title: 'Cook delicios meal', completed: false},
-    ],
-  }),
-  methods: {
-    removeTodo(id) {
-      this.todos = this.todos.filter((todo) => todo.id != id)
-    },
-    addTodo(todo) {
-      this.todos = [ ...this.todos, todo ];
-    }
-  },
-  components: {
-    AddTodo,
-    TodoList
-  }
-}
-</script>
 
 <style>
 #app {

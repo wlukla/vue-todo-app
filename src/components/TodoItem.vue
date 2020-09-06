@@ -6,7 +6,7 @@
           type="checkbox"
           v-on:change="todo.completed = !todo.completed"
         />
-        <strong>{{ todo.id }}</strong>
+        <strong>{{ index }}</strong>
       {{ todo.title }}
       </span>
       <button
@@ -26,6 +26,7 @@ export default {
       type: Object,
       required: true,
     },
+    index: Number
   }
 }
 </script>
