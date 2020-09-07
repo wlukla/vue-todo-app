@@ -3,9 +3,10 @@
     <ul>
       <TodoItem
         v-for="(todo, i) of todos"
-        v-bind:todo="todo"
-        v-bind:index="i"
-        v-bind:key="todo.id"
+        :todo="todo"
+        :index="i"
+        :key="todo.id"
+
         v-on:remove-todo="removeTodo"
       />
     </ul>
